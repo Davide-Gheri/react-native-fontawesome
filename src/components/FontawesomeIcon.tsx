@@ -1,19 +1,20 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import { icon, IconProp, FlipProp, FaSymbol, Transform, RotateProp, SizeProp, PullProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
 import { convert } from '../converter';
 import log from '../logger';
 
 export interface IconProps {
-  icon: IconProp
-  mask?: IconProp
-  color?: string
-  flip?: FlipProp
-  size?: SizeProp
-  pull?: PullProp
-  rotation?: RotateProp
-  transform?: Transform
-  symbol?: FaSymbol
+  icon: IconProp;
+  mask?: IconProp;
+  color?: string;
+  flip?: FlipProp;
+  size?: SizeProp;
+  pull?: PullProp;
+  rotation?: RotateProp;
+  transform?: Transform;
+  symbol?: FaSymbol;
   style?: any;
   tabIndex?: number;
   title?: string;
@@ -32,7 +33,7 @@ function normalizeIconArgs(icon?: IconProp): IconLookup | null {
   return null;
 }
 
-const Icon: React.FunctionComponent<IconProps> = (props: IconProps) => {
+const Icon: React.FunctionComponent<any> = (props: IconProps) => {
   const { icon: iconArgs, mask: maskArgs, symbol, title, transform, size, color, style } = props;
 
   const iconLookup = normalizeIconArgs(iconArgs);
@@ -66,3 +67,41 @@ const Icon: React.FunctionComponent<IconProps> = (props: IconProps) => {
 Icon.displayName = 'Icon';
 
 export default Icon;
+
+Icon.propTypes = {
+  mask: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
+
+  icon: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
+
+  size: PropTypes.oneOf([
+    'lg',
+    'xs',
+    'sm',
+    '1x',
+    '2x',
+    '3x',
+    '4x',
+    '5x',
+    '6x',
+    '7x',
+    '8x',
+    '9x',
+    '10x',
+  ]),
+
+  symbol: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
+  title: PropTypes.string,
+
+  transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+
+  color: PropTypes.string,
+}
