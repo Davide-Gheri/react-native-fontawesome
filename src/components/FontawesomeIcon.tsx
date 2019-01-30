@@ -1,10 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
-import { findIconDefinition, icon, IconProp, FlipProp, FaSymbol, Transform, RotateProp, SizeProp, PullProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
+import { icon, IconProp, FlipProp, FaSymbol, Transform, RotateProp, SizeProp, PullProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
 import { convert } from '../converter';
-
-const DEFAULT_ICON = 'question-circle';
-const DEFAULT_ICON_LOOKUP: IconLookup = {prefix: 'far', iconName: DEFAULT_ICON};
+import log from '../logger';
 
 export interface IconProps {
   icon: IconProp
@@ -36,25 +34,27 @@ function normalizeIconArgs(icon?: IconProp): IconLookup | null {
 
 const Icon: React.FunctionComponent<IconProps> = (props: IconProps) => {
   const { icon: iconArgs, mask: maskArgs, symbol, title, transform, size, color, style } = props;
-  let iconDef = findIconDefinition(normalizeIconArgs(iconArgs) || DEFAULT_ICON_LOOKUP);
-  if (!iconDef) {
-    iconDef = findIconDefinition(DEFAULT_ICON_LOOKUP);
+
+  const iconLookup = normalizeIconArgs(iconArgs);
+
+  if (!iconLookup) {
+    log('Could not find icon', iconArgs);
+    return null;
   }
 
-  const maskLookup = normalizeIconArgs(maskArgs);
-  let mask;
-  if (maskLookup) {
-    mask = findIconDefinition(maskLookup);
-  }
+  const mask = normalizeIconArgs(maskArgs);
 
-  const iconObj = icon(iconDef, Object.assign({},
+  const iconObj = icon(iconLookup, Object.assign({},
     {transform},
     mask ? {mask} : null,
     {symbol},
     {title},
   ));
 
-  if (!iconObj) return null;
+  if (!iconObj) {
+    log('Could not find icon', iconLookup);
+    return null;
+  }
 
   const absIcon = iconObj.abstract[0];
 
