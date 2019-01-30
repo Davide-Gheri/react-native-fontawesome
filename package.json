@@ -1,0 +1,20 @@
+{
+  "name": "react-native-fontawesome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.13",
+    "@types/node": "^10.12.19",
+    "@types/react": "^16.7.22",
+    "@types/react-native": "^0.57.32",
+    "react": "^16.7.0",
+    "react-native": "^0.58.3",
+    "react-native-svg": "^9.0.6"
+  }
+}
