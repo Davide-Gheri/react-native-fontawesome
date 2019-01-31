@@ -9,13 +9,13 @@ exports[`<FontawesomeIcon> should render correctly passing an icon name 1`] = `
   <RNSVGSvgView
     align="xMidYMid"
     aria-hidden="true"
-    bbHeight={24}
-    bbWidth={24}
+    bbHeight="24"
+    bbWidth="24"
     class="svg-inline--fa fa-circle fa-w-16"
     data-icon="circle"
     data-prefix="fas"
     focusable="false"
-    height={24}
+    height="24"
     meetOrSlice={0}
     minX={0}
     minY={0}
@@ -37,7 +37,7 @@ exports[`<FontawesomeIcon> should render correctly passing an icon name 1`] = `
     }
     vbHeight={512}
     vbWidth={512}
-    width={24}
+    width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
     <RNSVGGroup
