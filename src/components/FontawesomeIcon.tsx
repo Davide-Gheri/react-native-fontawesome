@@ -22,13 +22,13 @@ export interface IconProps {
 
 function normalizeIconArgs(icon?: IconProp): IconLookup | null {
   if (Array.isArray(icon) && icon.length === 2) {
-    return { prefix: icon[0], iconName: icon[1] }
+    return { prefix: icon[0], iconName: icon[1] };
   }
   if (typeof icon === 'object' && (icon as IconLookup).prefix && (icon as IconLookup).iconName) {
     return icon as IconLookup;
   }
   if (typeof icon === 'string') {
-    return { prefix: 'far', iconName: icon }
+    return { prefix: 'far', iconName: icon };
   }
   return null;
 }
@@ -45,11 +45,14 @@ const Icon: React.FunctionComponent<any> = (props: IconProps) => {
 
   const mask = normalizeIconArgs(maskArgs);
 
-  const iconObj = icon(iconLookup, Object.assign({},
-    {transform},
-    mask ? {mask} : null,
-    {symbol},
-    {title},
+  const iconObj = icon(
+    iconLookup,
+    Object.assign(
+      {},
+      {transform},
+      mask ? {mask} : null,
+      {symbol},
+      {title},
   ));
 
   if (!iconObj) {
@@ -62,11 +65,9 @@ const Icon: React.FunctionComponent<any> = (props: IconProps) => {
   const Icn = convert(absIcon, {size, color});
 
   return React.createElement(View, {style}, Icn);
-}
+};
 
 Icon.displayName = 'Icon';
-
-export default Icon;
 
 Icon.propTypes = {
   mask: PropTypes.oneOfType([
@@ -104,4 +105,6 @@ Icon.propTypes = {
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
   color: PropTypes.string,
-}
+};
+
+export default Icon;

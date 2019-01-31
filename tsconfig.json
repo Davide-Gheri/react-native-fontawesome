@@ -3,12 +3,18 @@
     "resolveJsonModule": true,
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es2015", "dom", "esnext"],
+    "lib": ["es6"],
     "jsx": "react",
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
-  }
+    "strictNullChecks": true,
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

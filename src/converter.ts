@@ -23,7 +23,7 @@ export function sizeToInt(size?: SizeProp) {
     case size === 'sm':
       return base * 0.875;
     case size && (size as string).indexOf('x') === (size as string).length:
-      const multi = parseInt((size as string).replace('x', ''));
+      const multi = parseInt((size as string).replace('x', ''), 10);
       return base * multi;
     default:
       return base;
@@ -31,18 +31,20 @@ export function sizeToInt(size?: SizeProp) {
 
 }
 
-export function convert(tree: AbstractElement, otherProps: {size?: SizeProp; color?: string} = {}, key?: string | number,) {
+export function convert(tree: AbstractElement, otherProps: {size?: SizeProp; color?: string} = {}, key?: string | number) {
   const childrens: any = tree.children ? tree.children.map((t, k) => convert(t, {color: otherProps.color}, k + 1)) : [];
 
   const { size, color } = otherProps;
 
-  const props = Object.assign({}, tree.attributes,
+  const props = Object.assign(
+    {},
+    tree.attributes,
     key ? {key} : null,
     color ? {fill: color} : null,
     {
       width: sizeToInt(size),
-      height: sizeToInt(size)
-    }
+      height: sizeToInt(size),
+    },
   );
 
   return React.createElement(mapping[tree.tag], props, childrens);

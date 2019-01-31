@@ -1,11 +1,11 @@
 let PRODUCTION = false;
 
 try {
-  PRODUCTION = process.env.NODE_ENV === 'production'
+  PRODUCTION = process.env.NODE_ENV === 'production';
 } catch (e) {}
 
-export default function(...args: any[]) {
+export default function (...args: any[]) {
   if (!PRODUCTION && console && typeof console.error === 'function') {
-    console.error(...args)
+    console.error(...args);
   }
 }

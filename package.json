@@ -1,22 +1,41 @@
 {
   "name": "react-native-fontawesome",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "React Native component for Font Awesome 5",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist": "cross-env NODE_ENV=production npm run clean && tsc",
+    "lint": "tslint -p .",
+    "prettier": "pretty-quick src --staged",
+    "precommit": "npm run lint && npm run prettier && npm run clean",
+    "clean": "rimraf dist/",
+    "typecheck": "tsc --noEmit"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Davide Gheri <davide@davidegheri.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.x",
+    "react": "^16.x",
+    "react-native": "^0.58.x",
+    "react-native-svg": "^9.0.x"
+  },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.13",
-    "@types/node": "^10.12.19",
     "@types/prop-types": "^15.5.8",
     "@types/react": "^16.7.22",
     "@types/react-native": "^0.57.32",
+    "cross-env": "^5.2.0",
+    "prettier": "^1.11.1",
+    "pretty-quick": "^1.2.2",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-native": "^0.58.3",
-    "react-native-svg": "^9.0.6"
+    "react-native-svg": "^9.0.6",
+    "react-test-renderer": "^16.7.0",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.2.4"
   }
 }
