@@ -1,12 +1,16 @@
 # react-native-fontawesome
 
+[![Coverage Status](https://coveralls.io/repos/github/Davide-Gheri/react-native-fontawesome/badge.svg?branch=develop)](https://coveralls.io/github/Davide-Gheri/react-native-fontawesome?branch=develop)
+[![Build Status](https://travis-ci.com/Davide-Gheri/react-native-fontawesome.svg?branch=master)](https://travis-ci.com/Davide-Gheri/react-native-fontawesome)
+[![npm version](https://badge.fury.io/js/%40davidegheri%2Freact-native-fontawesome.svg)](https://badge.fury.io/js/%40davidegheri%2Freact-native-fontawesome)
+
 Font Awesome 5 React Native component using SVG with JS and react-native-svg, heavily inpired by the react-fontawesome package
 
 ## Introduction
 
 #### Get started
 
-This package is for integrating Font Awesome 5 SVG in JS with React Native, 
+This package is for integrating Font Awesome 5 SVG in JS with React Native,
 
 It leverages the amazing react-native-svg package to render the icon svg in a React native environment
 
@@ -37,6 +41,7 @@ $ npm i --save @fortawesome/pro-light-svg-icons
 ## Usage
 
 Add icons to the library first, usually in you app entry point (App.js)
+
 ```javascript
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -44,11 +49,15 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 
 library.add(fab, fas);
 ```
+
 Then, you can use any of the added icons as:
+
 ```javascript
 <FontAwesomeIcon icon="coffee" />
 ```
+
 The default used icon prefix is `fas`, from `@fortawesome/free-solid-svg-icons`, to use another set of icons, pass the prefix to the `icon` prop:
+
 ```javascript
 <FontAwesomeIcon icon={['fab', 'apple']} />
 
@@ -62,7 +71,7 @@ If you prefer to not use the `library` method, you can also explicitly import an
 ```javascript
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
-<FontawesomeIcon icon={faCoffee} />
+<FontawesomeIcon icon={faCoffee} />;
 ```
 
 As a recap, the `icon` prop expects a single object:
