@@ -1,5 +1,5 @@
 {
-  "name": "react-native-fontawesome",
+  "name": "@davidegheri/react-native-fontawesome",
   "version": "0.0.0",
   "description": "React Native component for Font Awesome 5",
   "main": "dist/index.js",
