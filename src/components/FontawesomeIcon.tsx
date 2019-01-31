@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { icon, parse, IconProp, FlipProp, FaSymbol, Transform, RotateProp, SizeProp, PullProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
+import { icon, parse, IconProp, Transform, SizeProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
 import { convert } from '../converter';
 import log from '../logger';
 
@@ -9,12 +9,8 @@ export interface IconProps {
   icon: IconProp;
   mask?: IconProp;
   color?: string;
-  flip?: FlipProp;
   size?: SizeProp;
-  pull?: PullProp;
-  rotation?: RotateProp;
   transform?: Transform | string;
-  symbol?: FaSymbol;
   style?: any;
   tabIndex?: number;
   title?: string;
@@ -31,12 +27,12 @@ function normalizeIconArgs(icon?: IconProp): IconLookup | null | undefined {
     return icon as IconLookup;
   }
   if (typeof icon === 'string') {
-    return { prefix: 'far', iconName: icon };
+    return { prefix: 'fas', iconName: icon };
   }
 }
 
 const Icon: React.FunctionComponent<any> = (props: IconProps) => {
-  const { icon: iconArgs, mask: maskArgs, symbol, title, transform: transformArgs, size, color, style } = props;
+  const { icon: iconArgs, mask: maskArgs, title, transform: transformArgs, size, color, style } = props;
 
   const iconLookup = normalizeIconArgs(iconArgs);
 
@@ -52,7 +48,7 @@ const Icon: React.FunctionComponent<any> = (props: IconProps) => {
   const iconObj = icon(
     iconLookup,
     Object.assign(
-      {transform, symbol, title},
+      {transform, title},
       {mask},
     ),
   );
@@ -100,7 +96,7 @@ Icon.propTypes = {
     '10x',
   ]),
 
-  symbol: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  tabIndex: PropTypes.number,
 
   title: PropTypes.string,
 

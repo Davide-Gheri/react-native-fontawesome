@@ -1,14 +1,14 @@
 import React from 'react';
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer';
 import { library, IconName, SizeProp, icon as iconRn } from '@fortawesome/fontawesome-svg-core';
-import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import Icon, { IconProps } from '../FontawesomeIcon';
 import log from '../../logger';
 import { sizeToInt } from '../../converter';
 
 jest.mock('../../logger', () => jest.fn());
 
-library.add(far);
+library.add(fas);
 
 const render = (props: IconProps): ReactTestRendererJSON | null => renderer.create(<Icon {...props}/>).toJSON();
 
@@ -42,7 +42,7 @@ describe('<FontawesomeIcon>', () => {
     const icon = render({icon: 'notAnIcon' as IconName});
 
     expect(icon).toMatchInlineSnapshot('null');
-    expect(log).toHaveBeenCalledWith('Could not find icon', { prefix: 'far', iconName: 'notAnIcon' });
+    expect(log).toHaveBeenCalledWith('Could not find icon', { prefix: 'fas', iconName: 'notAnIcon' });
   });
 
   it('should render null if no icon is passed', () => {
@@ -92,7 +92,7 @@ describe('<FontawesomeIcon>', () => {
       y: 0,
     };
 
-    const icn = iconRn({iconName: 'circle', prefix: 'far'}, {transform});
+    const icn = iconRn({iconName: 'circle', prefix: 'fas'}, {transform});
     const style = icn.abstract[0].attributes.style;
 
     const icon = render({transform, icon: 'circle'}) as ReactTestRendererJSON;
