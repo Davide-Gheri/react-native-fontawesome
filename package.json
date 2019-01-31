@@ -14,7 +14,10 @@
     "clean": "rimraf dist/",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:coveralls": "npm run test -- --coverageReporters=text-lcov | coveralls"
+    "test:coveralls": "npm run test -- --coverageReporters=text-lcov | coveralls",
+    "prepublishOnly": "npm run build",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "husky": {
     "hooks": {
