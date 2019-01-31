@@ -22,13 +22,12 @@ export function sizeToInt(size?: SizeProp) {
       return (base * 4) / 3;
     case size === 'sm':
       return base * 0.875;
-    case size && (size as string).indexOf('x') === (size as string).length:
+    case typeof size === 'string' && (size as string).indexOf('x') === (size as string).length - 1:
       const multi = parseInt((size as string).replace('x', ''), 10);
       return base * multi;
     default:
       return base;
   }
-
 }
 
 export function convert(tree: AbstractElement, otherProps: {size?: SizeProp; color?: string} = {}, key?: string | number) {

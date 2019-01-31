@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { icon, IconProp, FlipProp, FaSymbol, Transform, RotateProp, SizeProp, PullProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
+import { icon, parse, IconProp, FlipProp, FaSymbol, Transform, RotateProp, SizeProp, PullProp, IconLookup } from '@fortawesome/fontawesome-svg-core';
 import { convert } from '../converter';
 import log from '../logger';
 
@@ -13,14 +13,17 @@ export interface IconProps {
   size?: SizeProp;
   pull?: PullProp;
   rotation?: RotateProp;
-  transform?: Transform;
+  transform?: Transform | string;
   symbol?: FaSymbol;
   style?: any;
   tabIndex?: number;
   title?: string;
 }
 
-function normalizeIconArgs(icon?: IconProp): IconLookup | null {
+function normalizeIconArgs(icon?: IconProp): IconLookup | null | undefined {
+  if (!icon) {
+    return null;
+  }
   if (Array.isArray(icon) && icon.length === 2) {
     return { prefix: icon[0], iconName: icon[1] };
   }
@@ -30,11 +33,10 @@ function normalizeIconArgs(icon?: IconProp): IconLookup | null {
   if (typeof icon === 'string') {
     return { prefix: 'far', iconName: icon };
   }
-  return null;
 }
 
 const Icon: React.FunctionComponent<any> = (props: IconProps) => {
-  const { icon: iconArgs, mask: maskArgs, symbol, title, transform, size, color, style } = props;
+  const { icon: iconArgs, mask: maskArgs, symbol, title, transform: transformArgs, size, color, style } = props;
 
   const iconLookup = normalizeIconArgs(iconArgs);
 
@@ -45,15 +47,15 @@ const Icon: React.FunctionComponent<any> = (props: IconProps) => {
 
   const mask = normalizeIconArgs(maskArgs);
 
+  const transform = typeof transformArgs === 'string' ? parse.transform(transformArgs) : transformArgs;
+
   const iconObj = icon(
     iconLookup,
     Object.assign(
-      {},
-      {transform},
-      mask ? {mask} : null,
-      {symbol},
-      {title},
-  ));
+      {transform, symbol, title},
+      {mask},
+    ),
+  );
 
   if (!iconObj) {
     log('Could not find icon', iconLookup);
