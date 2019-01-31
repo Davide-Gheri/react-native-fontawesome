@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/Davide-Gheri/react-native-fontawesome.svg?branch=master)](https://travis-ci.com/Davide-Gheri/react-native-fontawesome)
 [![npm version](https://badge.fury.io/js/%40davidegheri%2Freact-native-fontawesome.svg)](https://badge.fury.io/js/%40davidegheri%2Freact-native-fontawesome)
 
-Font Awesome 5 React Native component using SVG with JS and react-native-svg, heavily inpired by the react-fontawesome package
+Font Awesome 5 React Native component using SVG with JS and [react-native-svg](https://github.com/react-native-community/react-native-svg), heavily inpired by the [react-fontawesome](https://github.com/FortAwesome/react-fontawesome) package
 
 ## Introduction
 
@@ -18,7 +18,7 @@ It leverages the amazing react-native-svg package to render the icon svg in a Re
 
 ```
 $ npm i --save @fortawesome/fontawesome-svg-core
-$ npm i --save @davidegheri/react-native-fontawesome
+$ npm i --save react-native-fontawesome
 
 $ react-native link
 ```
