@@ -8,6 +8,5 @@ install:
 
 script:
   - npm run lint
-  - npm run tsc --version
   - npm run typecheck
   - npm run test

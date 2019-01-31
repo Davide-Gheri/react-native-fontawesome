@@ -5,13 +5,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dist": "cross-env NODE_ENV=production npm run clean && tsc",
+    "build": "cross-env NODE_ENV=production npm run clean && tsc",
     "lint": "tslint -p .",
     "prettier": "pretty-quick src --staged",
     "precommit": "npm run lint && npm run prettier && npm run test && npm run clean",
     "clean": "rimraf dist/",
     "typecheck": "tsc --noEmit",
-    "tsc": "tsc",
     "test": "jest"
   },
   "author": "Davide Gheri <davide@davidegheri.com>",
