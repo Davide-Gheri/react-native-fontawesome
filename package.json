@@ -4,6 +4,9 @@
   "description": "React Native component for Font Awesome 5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "cross-env NODE_ENV=production npm run clean && tsc",
     "lint": "tslint -p .",
@@ -18,8 +21,22 @@
       "pre-commit": "npm run lint && npm run prettier && npm run test && npm run clean"
     }
   },
+  "homepage": "https://github.com/Davide-Gheri/react-native-fontawesome",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Davide-Gheri/react-native-fontawesome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Davide-Gheri/react-native-fontawesome/issues"
+  },
   "author": "Davide Gheri <davide@davidegheri.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "react-native",
+    "icon",
+    "fontawesome"
+  ],
   "dependencies": {
     "react-native-svg": "^9.0.x"
   },
