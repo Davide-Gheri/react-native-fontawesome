@@ -20,4 +20,9 @@ module.exports = {
   ],
   testEnvironment: 'node',
   cacheDirectory: '.jest/cache',
+  globals: {
+    'ts-jest': {
+      tsConfig: './tsconfig.test.json'
+    }
+  }
 };
