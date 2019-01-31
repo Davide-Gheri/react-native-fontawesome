@@ -11,7 +11,8 @@
     "precommit": "npm run lint && npm run prettier && npm run test && npm run clean",
     "clean": "rimraf dist/",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "test:coveralls": "npm run test -- --coverageReporters=text-lcov | coveralls"
   },
   "author": "Davide Gheri <davide@davidegheri.com>",
   "license": "MIT",
@@ -29,6 +30,7 @@
     "@types/react": "^16.7.22",
     "@types/react-native": "^0.57.32",
     "@types/react-test-renderer": "^16.0.3",
+    "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.2.2",
