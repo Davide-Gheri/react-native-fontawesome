@@ -10,7 +10,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production npm run clean && tsc",
     "lint": "tslint -p .",
-    "prettier": "pretty-quick src --staged",
+    "prettier": "pretty-quick src",
     "clean": "rimraf dist/",
     "typecheck": "tsc --noEmit",
     "test": "jest",

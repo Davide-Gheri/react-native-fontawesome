@@ -4,7 +4,7 @@ import {
   library,
   IconName,
   SizeProp,
-  icon as iconRn
+  icon as iconRn,
 } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Icon, { IconProps } from '../FontawesomeIcon';
@@ -49,7 +49,7 @@ describe('<FontawesomeIcon>', () => {
     expect(icon).toMatchInlineSnapshot('null');
     expect(log).toHaveBeenCalledWith('Could not find icon', {
       prefix: 'fas',
-      iconName: 'notAnIcon'
+      iconName: 'notAnIcon',
     });
   });
 
@@ -63,7 +63,7 @@ describe('<FontawesomeIcon>', () => {
   it('should add styles to the wrapper View component', () => {
     const style = {
       marginLeft: 20,
-      marginRight: 20
+      marginRight: 20,
     };
     const icon = render({ style, icon: 'circle' }) as ReactTestRendererJSON;
 
@@ -84,7 +84,7 @@ describe('<FontawesomeIcon>', () => {
       '7x',
       '8x',
       '9x',
-      '10x'
+      '10x',
     ] as SizeProp[]).forEach(size => {
       const toInt = sizeToInt(size).toString();
       const icon = render({ size, icon: 'circle' }) as ReactTestRendererJSON;
@@ -98,7 +98,7 @@ describe('<FontawesomeIcon>', () => {
   it('should set SVG fill based on color prop', () => {
     const icon = render({
       icon: 'circle',
-      color: '#fafafa'
+      color: '#fafafa',
     }) as ReactTestRendererJSON;
     const SVG = (icon.children as ReactTestRendererJSON[])[0];
 
@@ -112,7 +112,7 @@ describe('<FontawesomeIcon>', () => {
       rotate: 15,
       size: 56,
       x: -4,
-      y: 0
+      y: 0,
     };
 
     const icn = iconRn({ iconName: 'circle', prefix: 'fas' }, { transform });

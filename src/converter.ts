@@ -8,7 +8,7 @@ import {
   Mask,
   ClipPath,
   G,
-  Circle
+  Circle,
 } from 'react-native-svg';
 
 export const mapping: { [key: string]: React.ComponentClass<any, any> } = {
@@ -19,7 +19,7 @@ export const mapping: { [key: string]: React.ComponentClass<any, any> } = {
   defs: Defs,
   mask: Mask,
   clipPath: ClipPath,
-  circle: Circle
+  circle: Circle,
 };
 
 export function sizeToInt(size?: SizeProp): number {
@@ -43,11 +43,11 @@ export function sizeToInt(size?: SizeProp): number {
 export function convert(
   tree: AbstractElement,
   otherProps: { size?: SizeProp; color?: string } = {},
-  key?: string | number
+  key?: string | number,
 ) {
   const childrens: any = tree.children
     ? tree.children.map((t, k) =>
-        convert(t, { color: otherProps.color }, k + 1)
+        convert(t, { color: otherProps.color }, k + 1),
       )
     : [];
 
@@ -60,8 +60,8 @@ export function convert(
     color ? { fill: color } : null,
     {
       width: sizeToInt(size).toString(),
-      height: sizeToInt(size).toString()
-    }
+      height: sizeToInt(size).toString(),
+    },
   );
 
   return React.createElement(mapping[tree.tag], props, childrens);
