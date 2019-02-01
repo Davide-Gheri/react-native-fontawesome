@@ -20,7 +20,7 @@ It leverages the amazing react-native-svg package to render the icon svg in a Re
 $ npm i --save @fortawesome/fontawesome-svg-core
 $ npm i --save @davidegheri/react-native-fontawesome
 
-$ react-native link
+$ react-native link react-native-svg
 ```
 
 ### Add at least one icon set
