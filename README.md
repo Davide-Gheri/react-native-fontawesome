@@ -23,6 +23,11 @@ $ npm i --save @davidegheri/react-native-fontawesome
 $ react-native link
 ```
 
+### Add at least one icon set
+```
+$ npm i --save @fortawesome/free-solid/svg-icons
+```
+
 ## Add more styles or Pro icons
 
 ```
